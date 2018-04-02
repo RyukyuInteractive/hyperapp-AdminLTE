@@ -48,9 +48,9 @@
     "typescript": "^2.7.2"
   },
   "dependencies": {
-    "@hyperapp/router": "^0.4.1",
+    "@hyperapp/router": "^0.5.1",
     "admin-lte": "^2.4.3",
-    "hyperapp": "^1.2.0",
+    "hyperapp": "^1.2.5",
     "optimizated-deep-get-js": "^0.0.1",
     "optimizated-deep-set-js": "^0.0.1",
     "optimizated-flatten-object-js": "^0.0.1"
