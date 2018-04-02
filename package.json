@@ -39,7 +39,7 @@
     "inversify": "^4.11.1",
     "lint-staged": "^7.0.0",
     "nib": "^1.1.2",
-    "parcel-bundler": "^1.6.2",
+    "parcel-bundler": "^1.7.0",
     "prettier": "^1.11.1",
     "reflect-metadata": "^0.1.12",
     "stylus": "^0.54.5",
