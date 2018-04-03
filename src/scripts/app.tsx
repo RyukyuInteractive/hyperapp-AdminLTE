@@ -1,49 +1,41 @@
-import { h, bindWhenNotBound, injectable, inject } from './kernel'
+import { bindWhenNotBound, h, inject, injectable } from './kernel'
 
 import './layout'
 
-@bindWhenNotBound()(binding => binding.inSingletonScope())
+@bindWhenNotBound()((binding) => binding.inSingletonScope())
 @injectable()
 export class App {
-
-  pureActions: any = {
+  public pureActions: any = {
     location: this.location.actions,
     update: () => ({})
   }
 
-  actions: any = {}
+  public actions: any = {}
 
-  state: any = {
+  public state: any = {
     location: this.location.state
   }
 
-  unsubscribeLocation: (() => void) = () => { }
-
-  constructor(
+  constructor (
     @inject('Layout') private layout,
     @inject('appEntryPoint') private entryPoint,
     @inject('hyperapp') private app,
-    @inject('kernel') private kernel,
-    @inject('location') private location,
+    @inject('location') private location
   ) {
     this.attach()
   }
 
-  attach() {
+  public unsubscribeLocation: (() => void) = () => void 0
+
+  public attach () {
     this.unsubscribeLocation()
 
-    this.actions = this.app(
-      this.state,
-      this.pureActions,
-      () => <this.layout />,
-      this.entryPoint
-    )
+    this.actions = this.app(this.state, this.pureActions, () => <this.layout />, this.entryPoint)
 
     this.unsubscribeLocation = this.location.subscribe(this.actions.location)
   }
 
-  retouch() {
+  public retouch () {
     setTimeout(this.attach.bind(this), 0)
   }
-
 }
