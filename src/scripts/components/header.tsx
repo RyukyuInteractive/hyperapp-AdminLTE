@@ -1,25 +1,20 @@
-import { bindWhenNotBound, h, injectable, InjectableFunction } from '../kernel'
+import { bindWhenNotBound, h, inject, injectable, InjectableFunction } from '../kernel'
+
+import './logo'
 
 import { images } from '../assets/index'
 
 @bindWhenNotBound()()
 @injectable()
 export class HeaderComponent extends InjectableFunction {
-  constructor () {
+  constructor (@inject('LogoComponent') private logoComponent) {
     super((attrs, childlen) => this.view(attrs, childlen))
   }
 
   public view (attrs, childlen) {
     return (state, actions) => (
       <div>
-        <a href="/" class="logo">
-          <span class="logo-mini">
-            <b>A</b>LT
-          </span>
-          <span class="logo-lg">
-            <b>Admin</b>LTE
-          </span>
-        </a>
+        <this.logoComponent />
 
         <nav class="navbar navbar-static-top">
           <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
