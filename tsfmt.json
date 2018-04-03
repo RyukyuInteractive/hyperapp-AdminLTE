@@ -8,7 +8,7 @@
   "insertSpaceAfterCommaDelimiter": true,
   "insertSpaceAfterSemicolonInForStatements": true,
   "insertSpaceBeforeAndAfterBinaryOperators": true,
-  "insertSpaceAfterConstructor": false,
+  "insertSpaceAfterConstructor": true,
   "insertSpaceAfterKeywordsInControlFlowStatements": true,
   "insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
   "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
@@ -17,7 +17,7 @@
   "insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
   "insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
   "insertSpaceAfterTypeAssertion": false,
-  "insertSpaceBeforeFunctionParenthesis": false,
+  "insertSpaceBeforeFunctionParenthesis": true,
   "placeOpenBraceOnNewLineForFunctions": false,
   "placeOpenBraceOnNewLineForControlBlocks": false
 }
