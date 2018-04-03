@@ -1,30 +1,35 @@
-import { InjectableFunction, bindWhenNotBound, h, injectable } from '../kernel'
+import { bindWhenNotBound, h, injectable, InjectableFunction } from '../kernel'
 
 @bindWhenNotBound()()
 @injectable()
 export class ControlSidebarComponent extends InjectableFunction {
-
-  constructor() {
+  constructor () {
     super((attrs, childlen) => this.view(attrs, childlen))
   }
 
-  view(attrs, childlen) {
+  public view (attrs, childlen) {
     return () => (
       <div>
-
         <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-          <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-          <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+          <li>
+            <a href="#control-sidebar-home-tab" data-toggle="tab">
+              <i class="fa fa-home" />
+            </a>
+          </li>
+          <li>
+            <a href="#control-sidebar-settings-tab" data-toggle="tab">
+              <i class="fa fa-gears" />
+            </a>
+          </li>
         </ul>
 
         <div class="tab-content">
-
           <div class="tab-pane" id="control-sidebar-home-tab">
             <h3 class="control-sidebar-heading">Recent Activity</h3>
             <ul class="control-sidebar-menu">
               <li>
                 <a href="javascript:void(0)">
-                  <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+                  <i class="menu-icon fa fa-birthday-cake bg-red" />
 
                   <div class="menu-info">
                     <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
@@ -35,7 +40,7 @@ export class ControlSidebarComponent extends InjectableFunction {
               </li>
               <li>
                 <a href="javascript:void(0)">
-                  <i class="menu-icon fa fa-user bg-yellow"></i>
+                  <i class="menu-icon fa fa-user bg-yellow" />
 
                   <div class="menu-info">
                     <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
@@ -46,7 +51,7 @@ export class ControlSidebarComponent extends InjectableFunction {
               </li>
               <li>
                 <a href="javascript:void(0)">
-                  <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+                  <i class="menu-icon fa fa-envelope-o bg-light-blue" />
 
                   <div class="menu-info">
                     <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
@@ -57,7 +62,7 @@ export class ControlSidebarComponent extends InjectableFunction {
               </li>
               <li>
                 <a href="javascript:void(0)">
-                  <i class="menu-icon fa fa-file-code-o bg-green"></i>
+                  <i class="menu-icon fa fa-file-code-o bg-green" />
 
                   <div class="menu-info">
                     <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
@@ -67,7 +72,6 @@ export class ControlSidebarComponent extends InjectableFunction {
                 </a>
               </li>
             </ul>
-
 
             <h3 class="control-sidebar-heading">Tasks Progress</h3>
             <ul class="control-sidebar-menu">
@@ -79,7 +83,7 @@ export class ControlSidebarComponent extends InjectableFunction {
                   </h4>
 
                   <div class="progress progress-xxs">
-                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                    <div class="progress-bar progress-bar-danger" style="width: 70%" />
                   </div>
                 </a>
               </li>
@@ -91,7 +95,7 @@ export class ControlSidebarComponent extends InjectableFunction {
                   </h4>
 
                   <div class="progress progress-xxs">
-                    <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+                    <div class="progress-bar progress-bar-success" style="width: 95%" />
                   </div>
                 </a>
               </li>
@@ -103,7 +107,7 @@ export class ControlSidebarComponent extends InjectableFunction {
                   </h4>
 
                   <div class="progress progress-xxs">
-                    <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+                    <div class="progress-bar progress-bar-warning" style="width: 50%" />
                   </div>
                 </a>
               </li>
@@ -115,16 +119,12 @@ export class ControlSidebarComponent extends InjectableFunction {
                   </h4>
 
                   <div class="progress progress-xxs">
-                    <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+                    <div class="progress-bar progress-bar-primary" style="width: 68%" />
                   </div>
                 </a>
               </li>
             </ul>
-
-
           </div>
-
-
 
           <div class="tab-pane" id="control-sidebar-settings-tab">
             <form method="post">
@@ -136,11 +136,8 @@ export class ControlSidebarComponent extends InjectableFunction {
                   <input type="checkbox" class="pull-right" checked />
                 </label>
 
-                <p>
-                  Some information about this general settings option
-                </p>
+                <p>Some information about this general settings option</p>
               </div>
-
 
               <div class="form-group">
                 <label class="control-sidebar-subheading">
@@ -148,11 +145,8 @@ export class ControlSidebarComponent extends InjectableFunction {
                   <input type="checkbox" class="pull-right" checked />
                 </label>
 
-                <p>
-                  Other sets of options are available
-                </p>
+                <p>Other sets of options are available</p>
               </div>
-
 
               <div class="form-group">
                 <label class="control-sidebar-subheading">
@@ -160,11 +154,8 @@ export class ControlSidebarComponent extends InjectableFunction {
                   <input type="checkbox" class="pull-right" checked />
                 </label>
 
-                <p>
-                  Allow the user to show his name in blog posts
-                </p>
+                <p>Allow the user to show his name in blog posts</p>
               </div>
-
 
               <h3 class="control-sidebar-heading">Chat Settings</h3>
 
@@ -175,7 +166,6 @@ export class ControlSidebarComponent extends InjectableFunction {
                 </label>
               </div>
 
-
               <div class="form-group">
                 <label class="control-sidebar-subheading">
                   Turn off notifications
@@ -183,19 +173,18 @@ export class ControlSidebarComponent extends InjectableFunction {
                 </label>
               </div>
 
-
               <div class="form-group">
                 <label class="control-sidebar-subheading">
                   Delete chat history
-                  <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+                  <a href="javascript:void(0)" class="text-red pull-right">
+                    <i class="fa fa-trash-o" />
+                  </a>
                 </label>
               </div>
-
             </form>
           </div>
-
         </div>
       </div>
-    );
+    )
   }
 }

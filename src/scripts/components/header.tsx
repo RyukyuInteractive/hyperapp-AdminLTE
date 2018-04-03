@@ -1,21 +1,24 @@
-import { InjectableFunction, bindWhenNotBound, h, injectable } from '../kernel'
+import { bindWhenNotBound, h, injectable, InjectableFunction } from '../kernel'
 
 import { images } from '../assets/index'
 
 @bindWhenNotBound()()
 @injectable()
 export class HeaderComponent extends InjectableFunction {
-
-  constructor() {
+  constructor () {
     super((attrs, childlen) => this.view(attrs, childlen))
   }
 
-  view(attrs, childlen) {
+  public view (attrs, childlen) {
     return (state, actions) => (
       <div>
         <a href="/" class="logo">
-          <span class="logo-mini"><b>A</b>LT</span>
-          <span class="logo-lg"><b>Admin</b>LTE</span>
+          <span class="logo-mini">
+            <b>A</b>LT
+          </span>
+          <span class="logo-lg">
+            <b>Admin</b>LTE
+          </span>
         </a>
 
         <nav class="navbar navbar-static-top">
@@ -27,7 +30,7 @@ export class HeaderComponent extends InjectableFunction {
             <ul class="nav navbar-nav">
               <li class="dropdown messages-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-envelope-o"></i>
+                  <i class="fa fa-envelope-o" />
                   <span class="label label-success">4</span>
                 </a>
 
@@ -42,7 +45,9 @@ export class HeaderComponent extends InjectableFunction {
                           </div>
                           <h4>
                             Support Team
-                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                            <small>
+                              <i class="fa fa-clock-o" /> 5 mins
+                            </small>
                           </h4>
                           <p>Why not buy a new awesome theme?</p>
                         </a>
@@ -55,7 +60,9 @@ export class HeaderComponent extends InjectableFunction {
                           </div>
                           <h4>
                             AdminLTE Design Team
-                            <small><i class="fa fa-clock-o"></i> 2 hours</small>
+                            <small>
+                              <i class="fa fa-clock-o" /> 2 hours
+                            </small>
                           </h4>
                           <p>Why not buy a new awesome theme?</p>
                         </a>
@@ -68,7 +75,9 @@ export class HeaderComponent extends InjectableFunction {
                           </div>
                           <h4>
                             Developers
-                            <small><i class="fa fa-clock-o"></i> Today</small>
+                            <small>
+                              <i class="fa fa-clock-o" /> Today
+                            </small>
                           </h4>
                           <p>Why not buy a new awesome theme?</p>
                         </a>
@@ -81,7 +90,9 @@ export class HeaderComponent extends InjectableFunction {
                           </div>
                           <h4>
                             Sales Department
-                            <small><i class="fa fa-clock-o"></i> Yesterday</small>
+                            <small>
+                              <i class="fa fa-clock-o" /> Yesterday
+                            </small>
                           </h4>
                           <p>Why not buy a new awesome theme?</p>
                         </a>
@@ -94,20 +105,24 @@ export class HeaderComponent extends InjectableFunction {
                           </div>
                           <h4>
                             Reviewers
-                            <small><i class="fa fa-clock-o"></i> 2 days</small>
+                            <small>
+                              <i class="fa fa-clock-o" /> 2 days
+                            </small>
                           </h4>
                           <p>Why not buy a new awesome theme?</p>
                         </a>
                       </li>
                     </ul>
                   </li>
-                  <li class="footer"><a href="#">See All Messages</a></li>
+                  <li class="footer">
+                    <a href="#">See All Messages</a>
+                  </li>
                 </ul>
               </li>
 
               <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-bell-o"></i>
+                  <i class="fa fa-bell-o" />
                   <span class="label label-warning">10</span>
                 </a>
                 <ul class="dropdown-menu">
@@ -116,39 +131,41 @@ export class HeaderComponent extends InjectableFunction {
                     <ul class="menu">
                       <li>
                         <a href="#">
-                          <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                          <i class="fa fa-users text-aqua" /> 5 new members joined today
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                          page and may cause design problems
+                          <i class="fa fa-warning text-yellow" /> Very long description here that
+                          may not fit into the page and may cause design problems
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="fa fa-users text-red"></i> 5 new members joined
+                          <i class="fa fa-users text-red" /> 5 new members joined
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="fa fa-shopping-cart text-green"></i> 25 sales made
+                          <i class="fa fa-shopping-cart text-green" /> 25 sales made
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="fa fa-user text-red"></i> You changed your username
+                          <i class="fa fa-user text-red" /> You changed your username
                         </a>
                       </li>
                     </ul>
                   </li>
-                  <li class="footer"><a href="#">View all</a></li>
+                  <li class="footer">
+                    <a href="#">View all</a>
+                  </li>
                 </ul>
               </li>
 
               <li class="dropdown tasks-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-flag-o"></i>
+                  <i class="fa fa-flag-o" />
                   <span class="label label-danger">9</span>
                 </a>
                 <ul class="dropdown-menu">
@@ -162,8 +179,13 @@ export class HeaderComponent extends InjectableFunction {
                             <small class="pull-right">20%</small>
                           </h3>
                           <div class="progress xs">
-                            <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-                              aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                            <div
+                              class="progress-bar progress-bar-aqua"
+                              style="width: 20%"
+                              role="progressbar"
+                              aria-valuenow="20"
+                              aria-valuemin="0"
+                              aria-valuemax="100">
                               <span class="sr-only">20% Complete</span>
                             </div>
                           </div>
@@ -177,8 +199,13 @@ export class HeaderComponent extends InjectableFunction {
                             <small class="pull-right">40%</small>
                           </h3>
                           <div class="progress xs">
-                            <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar"
-                              aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                            <div
+                              class="progress-bar progress-bar-green"
+                              style="width: 40%"
+                              role="progressbar"
+                              aria-valuenow="20"
+                              aria-valuemin="0"
+                              aria-valuemax="100">
                               <span class="sr-only">40% Complete</span>
                             </div>
                           </div>
@@ -192,8 +219,13 @@ export class HeaderComponent extends InjectableFunction {
                             <small class="pull-right">60%</small>
                           </h3>
                           <div class="progress xs">
-                            <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar"
-                              aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                            <div
+                              class="progress-bar progress-bar-red"
+                              style="width: 60%"
+                              role="progressbar"
+                              aria-valuenow="20"
+                              aria-valuemin="0"
+                              aria-valuemax="100">
                               <span class="sr-only">60% Complete</span>
                             </div>
                           </div>
@@ -207,8 +239,13 @@ export class HeaderComponent extends InjectableFunction {
                             <small class="pull-right">80%</small>
                           </h3>
                           <div class="progress xs">
-                            <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar"
-                              aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                            <div
+                              class="progress-bar progress-bar-yellow"
+                              style="width: 80%"
+                              role="progressbar"
+                              aria-valuenow="20"
+                              aria-valuemin="0"
+                              aria-valuemax="100">
                               <span class="sr-only">80% Complete</span>
                             </div>
                           </div>
@@ -253,23 +290,28 @@ export class HeaderComponent extends InjectableFunction {
 
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
+                      <a href="#" class="btn btn-default btn-flat">
+                        Profile
+                      </a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="#" class="btn btn-default btn-flat">
+                        Sign out
+                      </a>
                     </div>
                   </li>
                 </ul>
               </li>
 
               <li>
-                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                <a href="#" data-toggle="control-sidebar">
+                  <i class="fa fa-gears" />
+                </a>
               </li>
-
             </ul>
           </div>
         </nav>
       </div>
-    );
+    )
   }
 }
