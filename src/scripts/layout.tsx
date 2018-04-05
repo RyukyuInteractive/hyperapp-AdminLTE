@@ -1,4 +1,4 @@
-import { InjectableFunction, bindWhenNotBound, h, injectable, inject } from './kernel'
+import { bindWhenNotBound, h, inject, injectable, InjectableFunction } from './kernel'
 
 import './components/control-sidebar'
 import './components/header'
@@ -8,17 +8,16 @@ import './routes'
 @bindWhenNotBound()()
 @injectable()
 export class Layout extends InjectableFunction {
-
-  constructor(
+  constructor (
     @inject('Routes') private routes,
     @inject('HeaderComponent') private header,
     @inject('SidebarComponent') private sidebar,
-    @inject('ControlSidebarComponent') private controlSidebar,
+    @inject('ControlSidebarComponent') private controlSidebar
   ) {
     super((attrs, childlen) => this.view(attrs, childlen))
   }
 
-  view(attrs, childlen) {
+  public view (attrs, childlen) {
     return (state, actions) => (
       <div>
         <header class="main-header">
@@ -37,8 +36,10 @@ export class Layout extends InjectableFunction {
           <div class="pull-right hidden-xs">
             <b>Version</b> 2.4.0
           </div>
-          <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-          reserved.
+          <strong>
+            Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.
+          </strong>{' '}
+          All rights reserved.
         </footer>
 
         <aside class="control-sidebar control-sidebar-dark">

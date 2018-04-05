@@ -1,76 +1,76 @@
-import {
-  Container,
-  decorate,
-  inject,
-  injectable,
-  interfaces,
-  named,
-  tagged
-} from 'inversify'
+import { Container, decorate, inject, injectable, interfaces, named, tagged } from 'inversify'
 
 import 'reflect-metadata'
 
 import { app, h } from 'hyperapp'
 
-//@ts-ignore
+// @ts-ignore
 import { Link, location, Route, Switch } from '@hyperapp/router'
 
-class InjectableFunction extends Function {
-  constructor(f: Function) {
-    super();
-    return Object.setPrototypeOf(f, new.target.prototype);
+const kernel = new Container()
+
+class InjectableFunction<
+  T extends
+    | (() => any)
+    | ((arg1: any) => any)
+    | ((arg1: any, arg2: any) => any)
+    | ((arg1: any, arg2: any, arg3: any) => any)
+    | ((arg1: any, arg2: any, arg3: any, arg4: any) => any)
+    | ((arg1: any, arg2: any, arg3: any, arg4: any, arg5: any) => any)
+    | ((...args: any[]) => any)
+> extends Function {
+  constructor (f: T) {
+    super()
+    return Object.setPrototypeOf(f, new.target.prototype)
   }
 }
 
 InjectableFunction.prototype = new Proxy(InjectableFunction.prototype, {
-  get(target, property, receiver) {
-    return 'constructor' === property ? Object : target[property];
+  get (target, property, receiver) {
+    return 'constructor' === property ? Object : target[property]
   }
-});
+})
 
-interface bindingInWhenOnCallback<T> {
-  (binding: interfaces.BindingInWhenOnSyntax<T>): void
-}
+type bindingInWhenOnCallback<T> = (binding: interfaces.BindingInWhenOnSyntax<T>) => void
 
-function createBindDecorator(binds, bindingInWhenOn, force: boolean) {
-  return function bind
-    <TFunction extends Function, T>(target: TFunction): TFunction {
-
+function createBindDecorator (binds, bindingInWhenOn, force: boolean) {
+  return function binding<TFunction extends interfaces.Newable<T> | interfaces.Abstract<T>, T> (
+    target: TFunction
+  ): TFunction {
     bindingInWhenOn(kernel.bind<T>(target).toSelf())
 
     if (target.name && (force || !kernel.isBound(target.name))) {
       bindingInWhenOn(kernel.bind<T>(target.name).to(target as any))
     }
 
-    for (const bind of binds) {
-      if (bind && (force || !kernel.isBound(bind))) {
-        bindingInWhenOn(kernel.bind<T>(bind).to(target as any))
+    for (const bindFrom of binds) {
+      if (bindFrom && (force || !kernel.isBound(bindFrom))) {
+        bindingInWhenOn(kernel.bind<T>(bindFrom).to(target as any))
       }
     }
 
-    return target;
+    return target
   }
 }
 
-const noopBindingSyntax = <T>(binding: interfaces.BindingInWhenOnSyntax<T>) => { };
+const noopBindingSyntax = <T>(binding: interfaces.BindingInWhenOnSyntax<T>) => binding
 
-function bind<T>(...binds: any[]) {
-  return function bindSyntax<T>(
-    bindingInWhenOn: (bindingInWhenOnCallback<T>) = noopBindingSyntax
+function bind<T> (...binds: any[]) {
+  return function bindSyntax (
+    bindingInWhenOn: bindingInWhenOnCallback<T> = noopBindingSyntax
   ): ClassDecorator {
-    return createBindDecorator(binds, bindingInWhenOn, true);
+    return createBindDecorator(binds, bindingInWhenOn, true)
   }
 }
 
-function bindWhenNotBound<T>(...binds: any[]) {
-  return function bindSyntaxWhenNotBound<T>(
-    bindingInWhenOn: (bindingInWhenOnCallback<T>) = noopBindingSyntax
+function bindWhenNotBound<T> (...binds: any[]) {
+  return function bindingSyntaxWhenNotBound (
+    bindingInWhenOn: bindingInWhenOnCallback<T> = noopBindingSyntax
   ): ClassDecorator {
-    return createBindDecorator(binds, bindingInWhenOn, false);
+    return createBindDecorator(binds, bindingInWhenOn, false)
   }
 }
 
-const kernel = new Container()
 kernel.bind(Container).toConstantValue(kernel)
 kernel.bind('kernel').toConstantValue(kernel)
 

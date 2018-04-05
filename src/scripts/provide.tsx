@@ -1,4 +1,4 @@
-import { InjectableFunction, bindWhenNotBound, h, injectable, kernel } from './kernel'
+import { bindWhenNotBound, h, injectable, InjectableFunction, kernel } from './kernel'
 
 import { deepGet } from './helpers'
 
@@ -7,12 +7,11 @@ const providers = {}
 @bindWhenNotBound()()
 @injectable()
 export class Provide extends InjectableFunction {
-
-  constructor() {
+  constructor () {
     super((attrs, childlen) => this.view(attrs, childlen))
   }
 
-  view(attrs, childlen) {
+  public view (attrs, childlen) {
     return (state, actions) => {
       const name = attrs.provider
       const sourceName = attrs.source || name.replace(/Provider$/, '')
@@ -30,7 +29,14 @@ export class Provide extends InjectableFunction {
       if (!providers[name]) {
         const provider = kernel.get(name) as () => Promise<any>
 
-        provider().then(actions.update)
+        provider()
+          .then(actions.update)
+          .catch((err) =>
+            ((console && console.error) || console.log || ((e) => e))(
+              'error: ' + err.toString(),
+              err
+            )
+          )
 
         providers[name] = provider
       }

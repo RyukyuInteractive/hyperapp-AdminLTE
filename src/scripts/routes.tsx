@@ -1,4 +1,4 @@
-import { InjectableFunction, bindWhenNotBound, h, injectable, inject, kernel } from './kernel'
+import { bindWhenNotBound, h, inject, injectable, InjectableFunction, kernel } from './kernel'
 
 import { flattenObject } from './helpers'
 import { Provide } from './provide'
@@ -19,27 +19,23 @@ for (const [provide, doImport] of Object.entries(flatProviders)) {
     )
 }
 
-
 @bindWhenNotBound()()
 @injectable()
 export class Routes extends InjectableFunction {
-
-  constructor(
+  constructor (
     @inject('Route') private route,
     @inject('RouteSwitch') private routeSwitch,
-    @inject(Provide) private provide,
+    @inject(Provide) private provide
   ) {
     super((attrs, childlen) => this.view(attrs, childlen))
   }
 
-  view(attrs, childlen) {
+  public view (attrs, childlen) {
     return (state, actions) => (
       <this.routeSwitch>
         <this.route
-          path='/'
-          render={(routeState) => <this.provide
-            provider='pages.homeProvider'
-            route={routeState} />}
+          path="/"
+          render={(routeState) => <this.provide provider="pages.homeProvider" route={routeState} />}
         />
         <this.route render={() => <h1>Not Found!!</h1>} />
       </this.routeSwitch>
