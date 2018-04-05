@@ -16,6 +16,37 @@ import 'reflect-metadata'
 import { default as jquery } from 'jquery'
 (window as any).jQuery = (window as any).$ = jquery
 
-import 'bootstrap'
+import moment from 'moment'
+(window as any).moment = moment
 
+import 'jquery-knob'
+import 'jquery-ui'
+import 'jvectormap'
+
+import 'admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2'
+import 'admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en'
+
+// bootstrap
+import 'bootstrap'
+import 'bootstrap-colorpicker'
+import 'bootstrap-datepicker'
+import 'bootstrap-daterangepicker'
+import 'bootstrap-slider'
+import 'bootstrap-timepicker'
+
+// othors
+import 'chart.js'
+import 'datatables.net'
+import 'datatables.net-bs'
+import 'fastclick'
+import 'flot'
+import 'inputmask'
+import 'ion-rangeslider'
+import 'morris.js/morris'
+import 'pace'
+import 'raphael'
+import 'select2'
+import 'slimscroll'
+
+// AdminLTE
 import 'admin-lte'
