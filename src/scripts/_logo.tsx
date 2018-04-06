@@ -1,8 +1,8 @@
-import { bindWhenNotBound, h, inject, injectable, InjectableFunction } from '../kernel'
+import { bindWhenNotBound, h, inject, injectable, InjectableFunction } from './kernel'
 
 @bindWhenNotBound()()
 @injectable()
-export class LogoComponent extends InjectableFunction {
+export class Logo extends InjectableFunction {
   constructor (@inject('Link') private link) {
     super((attrs, childlen) => this.view(attrs, childlen))
   }

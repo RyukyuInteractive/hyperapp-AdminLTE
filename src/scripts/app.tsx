@@ -1,7 +1,5 @@
 import { bindWhenNotBound, h, inject, injectable } from './kernel'
 
-import './layout'
-
 @bindWhenNotBound()((binding) => binding.inSingletonScope())
 @injectable()
 export class App {

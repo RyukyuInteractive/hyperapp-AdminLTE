@@ -9,8 +9,8 @@ import 'ionicons/dist/css/ionicons.css'
 import 'jvectormap/jquery-jvectormap.css'
 import 'morris.js/morris.css'
 
-import { app, h } from 'hyperapp'
-import { Container, decorate, inject, injectable, named, tagged } from 'inversify'
+import 'hyperapp'
+import 'inversify'
 import 'reflect-metadata'
 
 import { default as jquery } from 'jquery'

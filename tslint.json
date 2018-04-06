@@ -7,7 +7,7 @@
   "jsRules": {},
   "rules": {
     "await-promise": true,
-    "no-floating-promises": true,
+    "no-floating-promises": false,
     "no-unnecessary-qualifier": false,
     "no-unnecessary-type-assertion": false,
     "no-unused-variable": true,

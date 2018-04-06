@@ -1,10 +1,5 @@
 import { bindWhenNotBound, h, inject, injectable, InjectableFunction } from './kernel'
 
-import './components/control-sidebar'
-import './components/header'
-import './components/sidebar'
-import './routes'
-
 @bindWhenNotBound()()
 @injectable()
 export class Layout extends InjectableFunction {
