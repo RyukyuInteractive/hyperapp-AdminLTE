@@ -38,9 +38,7 @@ export class Root extends InjectableFunction {
           All rights reserved.
         </footer>
 
-        <aside class="control-sidebar control-sidebar-dark">
-          <this.controlSidebar />
-        </aside>
+        <this.controlSidebar />
       </this.layout>
     )
   }

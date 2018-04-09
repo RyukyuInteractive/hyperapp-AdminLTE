@@ -9,10 +9,10 @@ export class ControlSidebarComponent extends InjectableFunction {
 
   public view (attrs, childlen) {
     return () => (
-      <div>
+      <aside class="control-sidebar control-sidebar-dark">
         <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-          <li>
-            <a href="#control-sidebar-home-tab" data-toggle="tab">
+          <li class="active">
+            <a href="#control-sidebar-home-tab" data-toggle="tab" aria-expanded="true">
               <i class="fa fa-home" />
             </a>
           </li>
@@ -24,7 +24,7 @@ export class ControlSidebarComponent extends InjectableFunction {
         </ul>
 
         <div class="tab-content">
-          <div class="tab-pane" id="control-sidebar-home-tab">
+          <div class="tab-pane active" id="control-sidebar-home-tab">
             <h3 class="control-sidebar-heading">Recent Activity</h3>
             <ul class="control-sidebar-menu">
               <li>
@@ -184,7 +184,7 @@ export class ControlSidebarComponent extends InjectableFunction {
             </form>
           </div>
         </div>
-      </div>
+      </aside>
     )
   }
 }
