@@ -1,11 +1,13 @@
-import { bindWhenNotBound, h, injectable, InjectableFunction } from '../kernel'
+import { bindWhenNotBound, h, inject, injectable, InjectableFunction } from '../kernel'
+
+import './tree'
 
 import { images } from '../assets/index'
 
 @bindWhenNotBound()()
 @injectable()
 export class SidebarComponent extends InjectableFunction {
-  constructor () {
+  constructor (@inject('TreeComponent') private treeComponent) {
     super((attrs, childlen) => this.view(attrs, childlen))
   }
 
@@ -36,7 +38,7 @@ export class SidebarComponent extends InjectableFunction {
             </div>
           </form>
 
-          <ul class="sidebar-menu" data-widget="tree">
+          <this.treeComponent class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="active treeview menu-open">
               <a href="#">
@@ -364,7 +366,7 @@ export class SidebarComponent extends InjectableFunction {
                 <i class="fa fa-circle-o text-aqua" /> <span>Information</span>
               </a>
             </li>
-          </ul>
+          </this.treeComponent>
         </section>
       </div>
     )
