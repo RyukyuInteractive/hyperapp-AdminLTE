@@ -15,7 +15,7 @@ export class Root extends InjectableFunction {
 
   public view (attrs, childlen) {
     return (state, actions) => (
-      <this.layout class="hold-transition skin-blue sidebar-mini">
+      <this.layout>
         <header class="main-header">
           <this.header />
         </header>
