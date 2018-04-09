@@ -1,12 +1,13 @@
 import { kernel } from './kernel'
 
 import './_logo'
+import './_root'
 import './_routes'
 import './app'
 import './components/control-sidebar'
 import './components/header'
+import './components/layout'
 import './components/sidebar'
-import './layout'
 
 kernel.bind('appEntryPoint').toConstantValue(document.getElementById('app'))
 

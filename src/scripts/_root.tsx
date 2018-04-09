@@ -2,19 +2,20 @@ import { bindWhenNotBound, h, inject, injectable, InjectableFunction } from './k
 
 @bindWhenNotBound()()
 @injectable()
-export class Layout extends InjectableFunction {
+export class Root extends InjectableFunction {
   constructor (
     @inject('Routes') private routes,
     @inject('HeaderComponent') private header,
     @inject('SidebarComponent') private sidebar,
-    @inject('ControlSidebarComponent') private controlSidebar
+    @inject('ControlSidebarComponent') private controlSidebar,
+    @inject('LayoutComponent') private layout
   ) {
     super((attrs, childlen) => this.view(attrs, childlen))
   }
 
   public view (attrs, childlen) {
     return (state, actions) => (
-      <div>
+      <this.layout class="hold-transition skin-blue sidebar-mini">
         <header class="main-header">
           <this.header />
         </header>
@@ -23,7 +24,7 @@ export class Layout extends InjectableFunction {
           <this.sidebar />
         </aside>
 
-        <div class="content-wrapper" style="min-height: 864px;">
+        <div class="content-wrapper">
           <this.routes />
         </div>
 
@@ -40,7 +41,7 @@ export class Layout extends InjectableFunction {
         <aside class="control-sidebar control-sidebar-dark">
           <this.controlSidebar />
         </aside>
-      </div>
+      </this.layout>
     )
   }
 }

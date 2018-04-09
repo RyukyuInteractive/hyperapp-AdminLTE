@@ -15,7 +15,7 @@ export class App {
   }
 
   constructor (
-    @inject('Layout') private layout,
+    @inject('Root') private root,
     @inject('appEntryPoint') private entryPoint,
     @inject('hyperapp') private app,
     @inject('location') private location
@@ -28,18 +28,7 @@ export class App {
   public attach () {
     this.unsubscribeLocation()
 
-    this.actions = this.app(
-      this.state,
-      this.pureActions,
-      () => (
-        <div class="hold-transition skin-blue sidebar-mini">
-          <div class="wrapper">
-            <this.layout />
-          </div>
-        </div>
-      ),
-      this.entryPoint
-    )
+    this.actions = this.app(this.state, this.pureActions, () => <this.root />, this.entryPoint)
 
     this.unsubscribeLocation = this.location.subscribe(this.actions.location)
   }
