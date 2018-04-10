@@ -284,7 +284,7 @@ export class PagesHomeComponent extends InjectableFunction {
                         </span>
 
                         <div class="progress sm">
-                          <div class="progress-bar progress-bar-aqua" style="width: 80%" />
+                          <div class="progress-bar progress-bar-aqua" style={{ width: '80%' }} />
                         </div>
                       </div>
 
@@ -295,7 +295,7 @@ export class PagesHomeComponent extends InjectableFunction {
                         </span>
 
                         <div class="progress sm">
-                          <div class="progress-bar progress-bar-red" style="width: 80%" />
+                          <div class="progress-bar progress-bar-red" style={{ width: '80%' }} />
                         </div>
                       </div>
 
@@ -306,7 +306,7 @@ export class PagesHomeComponent extends InjectableFunction {
                         </span>
 
                         <div class="progress sm">
-                          <div class="progress-bar progress-bar-green" style="width: 80%" />
+                          <div class="progress-bar progress-bar-green" style={{ width: '80%' }} />
                         </div>
                       </div>
 
@@ -317,7 +317,7 @@ export class PagesHomeComponent extends InjectableFunction {
                         </span>
 
                         <div class="progress sm">
-                          <div class="progress-bar progress-bar-yellow" style="width: 80%" />
+                          <div class="progress-bar progress-bar-yellow" style={{ width: '80%' }} />
                         </div>
                       </div>
                     </div>
@@ -391,12 +391,12 @@ export class PagesHomeComponent extends InjectableFunction {
                   <div class="row">
                     <div class="col-md-9 col-sm-8">
                       <div class="pad">
-                        <div id="world-map-markers" style="height: 325px;" />
+                        <div id="world-map-markers" style={{ height: '325px' }} />
                       </div>
                     </div>
 
                     <div class="col-md-3 col-sm-4">
-                      <div class="pad box-pane-right bg-green" style="min-height: 280px">
+                      <div class="pad box-pane-right bg-green" style={{ 'min-height': '280px' }}>
                         <div class="description-block margin-bottom">
                           <div class="sparkbar pad" data-color="#fff">
                             90,70,90,70,75,80,70
@@ -890,7 +890,7 @@ export class PagesHomeComponent extends InjectableFunction {
                   <span class="info-box-number">5,200</span>
 
                   <div class="progress">
-                    <div class="progress-bar" style="width: 50%" />
+                    <div class="progress-bar" style={{ width: '50%' }} />
                   </div>
                   <span class="progress-description">50% Increase in 30 Days</span>
                 </div>
@@ -906,7 +906,7 @@ export class PagesHomeComponent extends InjectableFunction {
                   <span class="info-box-number">92,050</span>
 
                   <div class="progress">
-                    <div class="progress-bar" style="width: 20%" />
+                    <div class="progress-bar" style={{ width: '20%' }} />
                   </div>
                   <span class="progress-description">20% Increase in 30 Days</span>
                 </div>
@@ -922,7 +922,7 @@ export class PagesHomeComponent extends InjectableFunction {
                   <span class="info-box-number">114,381</span>
 
                   <div class="progress">
-                    <div class="progress-bar" style="width: 70%" />
+                    <div class="progress-bar" style={{ width: '70%' }} />
                   </div>
                   <span class="progress-description">70% Increase in 30 Days</span>
                 </div>
@@ -938,7 +938,7 @@ export class PagesHomeComponent extends InjectableFunction {
                   <span class="info-box-number">163,921</span>
 
                   <div class="progress">
-                    <div class="progress-bar" style="width: 40%" />
+                    <div class="progress-bar" style={{ width: '40%' }} />
                   </div>
                   <span class="progress-description">40% Increase in 30 Days</span>
                 </div>
