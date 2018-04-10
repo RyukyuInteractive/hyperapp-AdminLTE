@@ -8,7 +8,126 @@ import { images } from '../assets/index'
 export class PagesHomeComponent extends InjectableFunction {
   public actions = {}
 
-  constructor (@inject(Extend) private extend, @inject('BoxWidgetComponent') private boxWidget) {
+  private salesChartData: any = {
+    datasets: [
+      {
+        data: [65, 59, 80, 81, 56, 55, 40],
+        fillColor: 'rgb(210, 214, 222)',
+        label: 'Electronics',
+        pointColor: 'rgb(210, 214, 222)',
+        pointHighlightFill: '#fff',
+        pointHighlightStroke: 'rgb(220,220,220)',
+        pointStrokeColor: '#c1c7d1',
+        strokeColor: 'rgb(210, 214, 222)'
+      },
+      {
+        data: [28, 48, 40, 19, 86, 27, 90],
+        fillColor: 'rgba(60,141,188,0.9)',
+        label: 'Digital Goods',
+        pointColor: '#3b8bba',
+        pointHighlightFill: '#fff',
+        pointHighlightStroke: 'rgba(60,141,188,1)',
+        pointStrokeColor: 'rgba(60,141,188,1)',
+        strokeColor: 'rgba(60,141,188,0.8)'
+      }
+    ],
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July']
+  }
+
+  private salesChartOptions: any = {
+    bezierCurve: true,
+    bezierCurveTension: 0.3,
+    datasetFill: true,
+    datasetStroke: true,
+    datasetStrokeWidth: 2,
+    legendTemplate: `<ul class='<%=name.toLowerCase()%>-legend'>
+      <% for (var i=0; i<datasets.length; i++){%>
+        <li>
+          <span style='background-color:<%=datasets[i].lineColor%>'></span>
+          <%=datasets[i].label%>
+        </li>
+      <%}%>
+    </ul>`,
+    maintainAspectRatio: true,
+    pointDot: false,
+    pointDotRadius: 4,
+    pointDotStrokeWidth: 1,
+    pointHitDetectionRadius: 20,
+    responsive: true,
+    scaleGridLineColor: 'rgba(0,0,0,.05)',
+    scaleGridLineWidth: 1,
+    scaleShowGridLines: false,
+    scaleShowHorizontalLines: true,
+    scaleShowVerticalLines: true,
+    showScale: true
+  }
+
+  private pieChartData: any = [
+    {
+      color: '#f56954',
+      highlight: '#f56954',
+      label: 'Chrome',
+      value: 700
+    },
+    {
+      color: '#00a65a',
+      highlight: '#00a65a',
+      label: 'IE',
+      value: 500
+    },
+    {
+      color: '#f39c12',
+      highlight: '#f39c12',
+      label: 'FireFox',
+      value: 400
+    },
+    {
+      color: '#00c0ef',
+      highlight: '#00c0ef',
+      label: 'Safari',
+      value: 600
+    },
+    {
+      color: '#3c8dbc',
+      highlight: '#3c8dbc',
+      label: 'Opera',
+      value: 300
+    },
+    {
+      color: '#d2d6de',
+      highlight: '#d2d6de',
+      label: 'Navigator',
+      value: 100
+    }
+  ]
+
+  private pieChartOptions: any = {
+    animateRotate: true,
+    animateScale: false,
+    animationEasing: 'easeOutBounce',
+    animationSteps: 100,
+    legendTemplate: `<ul class='<%=name.toLowerCase()%>-legend'>
+      <% for (var i = 0; i<segments.length; i++){%>
+        <li>
+          <span style='background-color:<%=segments[i].fillColor%>'></span>
+          <%if (segments[i].label) {%><%=segments[i].label %><%}%>
+        </li >
+      <%}%>
+    </ul >`,
+    maintainAspectRatio: false,
+    percentageInnerCutout: 50, // This is 0 for Pie charts
+    responsive: true,
+    segmentShowStroke: true,
+    segmentStrokeColor: '#fff',
+    segmentStrokeWidth: 1,
+    tooltipTemplate: '<%=value %> <%=label%> users'
+  }
+
+  constructor (
+    @inject(Extend) private extend,
+    @inject('BoxWidgetComponent') private boxWidget,
+    @inject('ChartComponent') private chart
+  ) {
     super((attrs, childlen) => {
       const View = this.view.bind(this)
       return (
@@ -143,7 +262,13 @@ export class PagesHomeComponent extends InjectableFunction {
                       </p>
 
                       <div class="chart">
-                        <canvas id="salesChart" style="height: 180px;" />
+                        <this.chart
+                          id="salesChart"
+                          style={{ height: '180px' }}
+                          type="line"
+                          data={this.salesChartData}
+                          options={this.salesChartOptions}
+                        />
                       </div>
                     </div>
 
@@ -837,7 +962,13 @@ export class PagesHomeComponent extends InjectableFunction {
                   <div class="row">
                     <div class="col-md-8">
                       <div class="chart-responsive">
-                        <canvas id="pieChart" height="150" />
+                        <this.chart
+                          id="pieChart"
+                          height="150"
+                          type="doughnut"
+                          data={this.pieChartData}
+                          options={this.pieChartOptions}
+                        />
                       </div>
                     </div>
 
