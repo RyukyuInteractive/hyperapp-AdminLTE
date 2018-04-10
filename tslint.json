@@ -12,6 +12,7 @@
     "no-unnecessary-type-assertion": false,
     "no-unused-variable": true,
     "no-use-before-declare": true,
+    "object-literal-key-quotes": false,
     "quotemark": [true, "single", "jsx-double"],
     "return-undefined":false,
     "strict-type-predicates": true

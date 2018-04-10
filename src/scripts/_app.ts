@@ -10,6 +10,7 @@ import './components/control-sidebar'
 import './components/header'
 import './components/layout'
 import './components/sidebar'
+import './components/vector-map'
 
 kernel.bind('appEntryPoint').toConstantValue(document.getElementById('app'))
 
