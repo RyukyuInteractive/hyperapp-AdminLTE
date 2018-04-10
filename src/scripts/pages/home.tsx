@@ -8,12 +8,15 @@ import { images } from '../assets/index'
 export class PagesHomeComponent extends InjectableFunction {
   public actions = {}
 
-  constructor (@inject(Extend) private extend) {
-    super((attrs, childlen) => (
-      <this.extend scope="pages.home" actions={this.actions}>
-        <this.view {...attrs} />
-      </this.extend>
-    ))
+  constructor (@inject(Extend) private extend, @inject('BoxWidgetComponent') private boxWidget) {
+    super((attrs, childlen) => {
+      const View = this.view.bind(this)
+      return (
+        <this.extend scope="pages.home" actions={this.actions}>
+          <View {...attrs} />
+        </this.extend>
+      )
+    })
   }
 
   public view (attrs, childlen) {
@@ -95,7 +98,7 @@ export class PagesHomeComponent extends InjectableFunction {
 
           <div class="row">
             <div class="col-md-12">
-              <div class="box">
+              <this.boxWidget>
                 <div class="box-header with-border">
                   <h3 class="box-title">Monthly Recap Report</h3>
 
@@ -239,13 +242,13 @@ export class PagesHomeComponent extends InjectableFunction {
                     </div>
                   </div>
                 </div>
-              </div>
+              </this.boxWidget>
             </div>
           </div>
 
           <div class="row">
             <div class="col-md-8">
-              <div class="box box-success">
+              <this.boxWidget class="box-success">
                 <div class="box-header with-border">
                   <h3 class="box-title">Visitors Report</h3>
 
@@ -296,11 +299,11 @@ export class PagesHomeComponent extends InjectableFunction {
                     </div>
                   </div>
                 </div>
-              </div>
+              </this.boxWidget>
 
               <div class="row">
                 <div class="col-md-6">
-                  <div class="box box-warning direct-chat direct-chat-warning">
+                  <this.boxWidget class="box-warning direct-chat direct-chat-warning">
                     <div class="box-header with-border">
                       <h3 class="box-title">Direct Chat</h3>
 
@@ -522,11 +525,11 @@ export class PagesHomeComponent extends InjectableFunction {
                         </div>
                       </form>
                     </div>
-                  </div>
+                  </this.boxWidget>
                 </div>
 
                 <div class="col-md-6">
-                  <div class="box box-danger">
+                  <this.boxWidget class="box-danger">
                     <div class="box-header with-border">
                       <h3 class="box-title">Latest Members</h3>
 
@@ -607,11 +610,11 @@ export class PagesHomeComponent extends InjectableFunction {
                         View All Users
                       </a>
                     </div>
-                  </div>
+                  </this.boxWidget>
                 </div>
               </div>
 
-              <div class="box box-info">
+              <this.boxWidget class="box-info">
                 <div class="box-header with-border">
                   <h3 class="box-title">Latest Orders</h3>
 
@@ -748,7 +751,7 @@ export class PagesHomeComponent extends InjectableFunction {
                     View All Orders
                   </a>
                 </div>
-              </div>
+              </this.boxWidget>
             </div>
 
             <div class="col-md-4">
@@ -816,7 +819,7 @@ export class PagesHomeComponent extends InjectableFunction {
                 </div>
               </div>
 
-              <div class="box box-default">
+              <this.boxWidget class="box-default">
                 <div class="box-header with-border">
                   <h3 class="box-title">Browser Usage</h3>
 
@@ -891,9 +894,9 @@ export class PagesHomeComponent extends InjectableFunction {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </this.boxWidget>
 
-              <div class="box box-primary">
+              <this.boxWidget class="box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Recently Added Products</h3>
 
@@ -973,7 +976,7 @@ export class PagesHomeComponent extends InjectableFunction {
                     View All Products
                   </a>
                 </div>
-              </div>
+              </this.boxWidget>
             </div>
           </div>
         </section>
