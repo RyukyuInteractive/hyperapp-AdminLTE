@@ -1015,7 +1015,7 @@ export class PagesHomeComponent extends InjectableFunction {
 
               <div class="info-box bg-aqua">
                 <span class="info-box-icon">
-                  <i class="ion-ios-chatbubble-outline" />
+                  <i class="ion-ios-chatbubbles-outline" />
                 </span>
 
                 <div class="info-box-content">
