@@ -21,6 +21,7 @@ import moment from 'moment'
 (window as any).moment = moment
 
 import 'jquery-knob'
+import 'jquery-sparkline'
 import 'jquery-ui'
 import 'jvectormap'
 

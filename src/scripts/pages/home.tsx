@@ -186,7 +186,8 @@ export class PagesHomeComponent extends InjectableFunction {
     @inject(Extend) private extend,
     @inject('BoxWidgetComponent') private boxWidget,
     @inject('ChartComponent') private chart,
-    @inject('VectorMapComponent') private vectorMap
+    @inject('VectorMapComponent') private vectorMap,
+    @inject('SparklinesComponent') private sparklines
   ) {
     super((attrs, childlen) => {
       const View = this.view.bind(this)
@@ -462,25 +463,31 @@ export class PagesHomeComponent extends InjectableFunction {
                     <div class="col-md-3 col-sm-4">
                       <div class="pad box-pane-right bg-green" style={{ 'min-height': '280px' }}>
                         <div class="description-block margin-bottom">
-                          <div class="sparkbar pad" data-color="#fff">
+                          <this.sparklines
+                            class="sparkbar pad"
+                            options={{ height: 30, barColor: '#fff' }}>
                             90,70,90,70,75,80,70
-                          </div>
+                          </this.sparklines>
                           <h5 class="description-header">8390</h5>
                           <span class="description-text">Visits</span>
                         </div>
 
                         <div class="description-block margin-bottom">
-                          <div class="sparkbar pad" data-color="#fff">
+                          <this.sparklines
+                            class="sparkbar pad"
+                            options={{ height: 30, barColor: '#fff' }}>
                             90,50,90,70,61,83,63
-                          </div>
+                          </this.sparklines>
                           <h5 class="description-header">30%</h5>
                           <span class="description-text">Referrals</span>
                         </div>
 
                         <div class="description-block">
-                          <div class="sparkbar pad" data-color="#fff">
+                          <this.sparklines
+                            class="sparkbar pad"
+                            options={{ height: 30, barColor: '#fff' }}>
                             90,50,90,70,61,83,63
-                          </div>
+                          </this.sparklines>
                           <h5 class="description-header">70%</h5>
                           <span class="description-text">Organic</span>
                         </div>
@@ -838,9 +845,11 @@ export class PagesHomeComponent extends InjectableFunction {
                             <span class="label label-success">Shipped</span>
                           </td>
                           <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <this.sparklines
+                              class="sparkbar"
+                              options={{ height: 20, barColor: '#00a65a' }}>
                               90,80,90,-70,61,-83,63
-                            </div>
+                            </this.sparklines>
                           </td>
                         </tr>
                         <tr>
@@ -852,9 +861,11 @@ export class PagesHomeComponent extends InjectableFunction {
                             <span class="label label-warning">Pending</span>
                           </td>
                           <td>
-                            <div class="sparkbar" data-color="#f39c12" data-height="20">
+                            <this.sparklines
+                              class="sparkbar"
+                              options={{ height: 20, barColor: '#f39c12' }}>
                               90,80,-90,70,61,-83,68
-                            </div>
+                            </this.sparklines>
                           </td>
                         </tr>
                         <tr>
@@ -866,9 +877,11 @@ export class PagesHomeComponent extends InjectableFunction {
                             <span class="label label-danger">Delivered</span>
                           </td>
                           <td>
-                            <div class="sparkbar" data-color="#f56954" data-height="20">
+                            <this.sparklines
+                              class="sparkbar"
+                              options={{ height: 20, barColor: '#f56954' }}>
                               90,-80,90,70,-61,83,63
-                            </div>
+                            </this.sparklines>
                           </td>
                         </tr>
                         <tr>
@@ -880,9 +893,11 @@ export class PagesHomeComponent extends InjectableFunction {
                             <span class="label label-info">Processing</span>
                           </td>
                           <td>
-                            <div class="sparkbar" data-color="#00c0ef" data-height="20">
+                            <this.sparklines
+                              class="sparkbar"
+                              options={{ height: 20, barColor: '#00c0ef' }}>
                               90,80,-90,70,-61,83,63
-                            </div>
+                            </this.sparklines>
                           </td>
                         </tr>
                         <tr>
@@ -894,9 +909,11 @@ export class PagesHomeComponent extends InjectableFunction {
                             <span class="label label-warning">Pending</span>
                           </td>
                           <td>
-                            <div class="sparkbar" data-color="#f39c12" data-height="20">
+                            <this.sparklines
+                              class="sparkbar"
+                              options={{ height: 20, barColor: '#f39c12' }}>
                               90,80,-90,70,61,-83,68
-                            </div>
+                            </this.sparklines>
                           </td>
                         </tr>
                         <tr>
@@ -908,9 +925,11 @@ export class PagesHomeComponent extends InjectableFunction {
                             <span class="label label-danger">Delivered</span>
                           </td>
                           <td>
-                            <div class="sparkbar" data-color="#f56954" data-height="20">
+                            <this.sparklines
+                              class="sparkbar"
+                              options={{ height: 20, barColor: '#f56954' }}>
                               90,-80,90,70,-61,83,63
-                            </div>
+                            </this.sparklines>
                           </td>
                         </tr>
                         <tr>
@@ -922,9 +941,11 @@ export class PagesHomeComponent extends InjectableFunction {
                             <span class="label label-success">Shipped</span>
                           </td>
                           <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <this.sparklines
+                              class="sparkbar"
+                              options={{ height: 20, barColor: '#00a65a' }}>
                               90,80,90,-70,61,-83,63
-                            </div>
+                            </this.sparklines>
                           </td>
                         </tr>
                       </tbody>
