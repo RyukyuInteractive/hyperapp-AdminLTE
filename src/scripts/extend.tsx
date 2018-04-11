@@ -6,10 +6,10 @@ import { deepGet, deepSet, flattenObject } from './helpers'
 @injectable()
 export class Extend extends InjectableFunction {
   constructor (@inject('App') private app) {
-    super((attrs, childlen) => this.view(attrs, childlen))
+    super((attrs, children) => this.view(attrs, children))
   }
 
-  public view (attrs, childlen) {
+  public view (attrs, children) {
     attrs.actions = attrs.actions || {}
 
     if (!attrs.__actions) {
@@ -31,6 +31,6 @@ export class Extend extends InjectableFunction {
       this.app.retouch()
     }
 
-    return (state, actions) => <div>{childlen}</div>
+    return (state, actions) => <div>{children}</div>
   }
 }

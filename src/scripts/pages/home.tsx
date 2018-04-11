@@ -189,7 +189,7 @@ export class PagesHomeComponent extends InjectableFunction {
     @inject('VectorMapComponent') private vectorMap,
     @inject('SparklinesComponent') private sparklines
   ) {
-    super((attrs, childlen) => {
+    super((attrs, children) => {
       const View = this.view.bind(this)
       return (
         <this.extend scope="pages.home" actions={this.actions}>
@@ -199,7 +199,7 @@ export class PagesHomeComponent extends InjectableFunction {
     })
   }
 
-  public view (attrs, childlen) {
+  public view (attrs, children) {
     return (state, actions) => (
       <div>
         <section class="content-header">

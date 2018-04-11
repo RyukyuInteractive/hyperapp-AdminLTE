@@ -8,10 +8,10 @@ const providers = {}
 @injectable()
 export class Provide extends InjectableFunction {
   constructor () {
-    super((attrs, childlen) => this.view(attrs, childlen))
+    super((attrs, children) => this.view(attrs, children))
   }
 
-  public view (attrs, childlen) {
+  public view (attrs, children) {
     return (state, actions) => {
       const name = attrs.provider
       const sourceName = attrs.source || name.replace(/Provider$/, '')

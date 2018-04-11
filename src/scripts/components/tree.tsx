@@ -8,13 +8,13 @@ import 'admin-lte'
 @injectable()
 export class TreeComponent extends InjectableFunction<(arg1: any, arg2: any) => any> {
   constructor () {
-    super((attrs, childlen) => this.view(attrs, childlen))
+    super((attrs, children) => this.view(attrs, children))
   }
 
-  public view (attrs, childlen) {
+  public view (attrs, children) {
     return (state, actions) => (
       <ul oncreate={(element) => this.onCreate(element, attrs)} {...attrs}>
-        {childlen}
+        {children}
       </ul>
     )
   }

@@ -6,10 +6,10 @@ import { images } from '../assets/index'
 @injectable()
 export class HeaderComponent extends InjectableFunction {
   constructor (@inject('Logo') private logo) {
-    super((attrs, childlen) => this.view(attrs, childlen))
+    super((attrs, children) => this.view(attrs, children))
   }
 
-  public view (attrs, childlen) {
+  public view (attrs, children) {
     return (state, actions) => (
       <div>
         <this.logo />

@@ -27,10 +27,10 @@ export class Routes extends InjectableFunction {
     @inject('RouteSwitch') private routeSwitch,
     @inject(Provide) private provide
   ) {
-    super((attrs, childlen) => this.view(attrs, childlen))
+    super((attrs, children) => this.view(attrs, children))
   }
 
-  public view (attrs, childlen) {
+  public view (attrs, children) {
     return (state, actions) => (
       <this.routeSwitch>
         <this.route

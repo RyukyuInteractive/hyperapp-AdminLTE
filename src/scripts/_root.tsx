@@ -10,10 +10,10 @@ export class Root extends InjectableFunction {
     @inject('ControlSidebarComponent') private controlSidebar,
     @inject('LayoutComponent') private layout
   ) {
-    super((attrs, childlen) => this.view(attrs, childlen))
+    super((attrs, children) => this.view(attrs, children))
   }
 
-  public view (attrs, childlen) {
+  public view (attrs, children) {
     return (state, actions) => (
       <this.layout>
         <header class="main-header">

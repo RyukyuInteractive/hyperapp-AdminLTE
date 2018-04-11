@@ -8,13 +8,13 @@ import 'admin-lte'
 @injectable()
 export class LayoutComponent extends InjectableFunction<(arg1: any, arg2: any) => any> {
   constructor () {
-    super((attrs, childlen) => this.view(attrs, childlen))
+    super((attrs, children) => this.view(attrs, children))
   }
 
-  public view (attrs, childlen) {
+  public view (attrs, children) {
     return (state, actions) => (
       <div oncreate={(element) => this.onCreate(element, attrs)} {...attrs}>
-        <div class="wrapper">{childlen}</div>
+        <div class="wrapper">{children}</div>
       </div>
     )
   }

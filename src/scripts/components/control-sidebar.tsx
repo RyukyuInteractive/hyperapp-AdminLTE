@@ -4,10 +4,10 @@ import { bindWhenNotBound, h, injectable, InjectableFunction } from '../kernel'
 @injectable()
 export class ControlSidebarComponent extends InjectableFunction {
   constructor () {
-    super((attrs, childlen) => this.view(attrs, childlen))
+    super((attrs, children) => this.view(attrs, children))
   }
 
-  public view (attrs, childlen) {
+  public view (attrs, children) {
     return () => (
       <aside class="control-sidebar control-sidebar-dark">
         <ul class="nav nav-tabs nav-justified control-sidebar-tabs">

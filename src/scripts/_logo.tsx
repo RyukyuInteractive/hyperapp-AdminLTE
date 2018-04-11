@@ -4,10 +4,10 @@ import { bindWhenNotBound, h, inject, injectable, InjectableFunction } from './k
 @injectable()
 export class Logo extends InjectableFunction {
   constructor (@inject('Link') private link) {
-    super((attrs, childlen) => this.view(attrs, childlen))
+    super((attrs, children) => this.view(attrs, children))
   }
 
-  public view (attrs, childlen) {
+  public view (attrs, children) {
     return (state, actions) => (
       <this.link to="/" class="logo">
         <span class="logo-mini">

@@ -8,17 +8,17 @@ import 'admin-lte'
 @injectable()
 export class BoxWidgetComponent extends InjectableFunction<(arg1: any, arg2: any) => any> {
   constructor () {
-    super((attrs, childlen) => this.view(attrs, childlen))
+    super((attrs, children) => this.view(attrs, children))
   }
 
-  public view (attrs, childlen) {
+  public view (attrs, children) {
     if (null == attrs.class) {
       attrs.class = ''
     }
     attrs.class += ' box'
     return (state, actions) => (
       <div oncreate={(element) => this.onCreate(element, attrs)} {...attrs}>
-        {childlen}
+        {children}
       </div>
     )
   }

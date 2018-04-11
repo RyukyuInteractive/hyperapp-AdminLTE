@@ -10,16 +10,16 @@ export class ChartComponent extends InjectableFunction<(arg1: any, arg2: any) =>
   private chart: Chart
 
   constructor () {
-    super((attrs, childlen) => this.view(attrs, childlen))
+    super((attrs, children) => this.view(attrs, children))
   }
 
-  public view (attrs, childlen) {
+  public view (attrs, children) {
     return (state, actions) => (
       <canvas
         {...attrs}
         oncreate={(element) => this.onCreate(element, attrs)}
         onupdate={(element) => this.onUpdate(element, attrs)}>
-        {childlen}
+        {children}
       </canvas>
     )
   }

@@ -8,10 +8,10 @@ import { images } from '../assets/index'
 @injectable()
 export class SidebarComponent extends InjectableFunction {
   constructor (@inject('TreeComponent') private treeComponent) {
-    super((attrs, childlen) => this.view(attrs, childlen))
+    super((attrs, children) => this.view(attrs, children))
   }
 
-  public view (attrs, childlen) {
+  public view (attrs, children) {
     return (state, actions) => (
       <div>
         <section class="sidebar">

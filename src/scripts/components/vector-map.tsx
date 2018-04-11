@@ -8,10 +8,10 @@ import 'jvectormap'
 @injectable()
 export class VectorMapComponent extends InjectableFunction<(arg1: any, arg2: any) => any> {
   constructor () {
-    super((attrs, childlen) => this.view(attrs, childlen))
+    super((attrs, children) => this.view(attrs, children))
   }
 
-  public view (attrs, childlen) {
+  public view (attrs, children) {
     return (state, actions) => (
       <div
         {...attrs}
