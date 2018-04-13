@@ -1,25 +1,23 @@
-import { bindWhenNotBound, h, injectable, InjectableFunction } from '../kernel'
+import { h } from 'hyperapp'
 
 import { default as $ } from 'jquery'
 
 import 'admin-lte'
 
-@bindWhenNotBound()()
-@injectable()
-export class TreeComponent extends InjectableFunction<(arg1: any, arg2: any) => any> {
-  constructor () {
-    super((attrs, children) => this.view(attrs, children))
-  }
+import { parseJson } from '../helpers/parse-json'
 
-  public view (attrs, children) {
-    return (state, actions) => (
-      <ul oncreate={(element) => this.onCreate(element, attrs)} {...attrs}>
-        {children}
-      </ul>
-    )
-  }
+export function TreeComponent (attrs, children) {
+  return (state, actions) => (
+    <ul oncreate={(element) => onCreate(element, attrs)} {...attrs}>
+      {children}
+    </ul>
+  )
+}
 
-  private onCreate (element, attrs) {
-    $(element).tree(attrs.option)
-  }
+function onCreate (element, attrs) {
+  applyLibrary(element, attrs)
+}
+
+function applyLibrary (element, attrs) {
+  $(element).tree(parseJson(attrs.option))
 }

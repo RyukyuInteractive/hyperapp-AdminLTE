@@ -11,8 +11,6 @@ import 'admin-lte/dist/css/skins/_all-skins.css'
 import 'admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.css'
 
 import 'hyperapp'
-import 'inversify'
-import 'reflect-metadata'
 
 import { default as jquery } from 'jquery'
 (window as any).jQuery = (window as any).$ = jquery

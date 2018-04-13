@@ -1,44 +1,30 @@
-import { bindWhenNotBound, h, injectable, InjectableFunction } from '../kernel'
+import { h } from 'hyperapp'
 
 import { default as $ } from 'jquery'
 
 import 'jvectormap'
 
-@bindWhenNotBound()()
-@injectable()
-export class VectorMapComponent extends InjectableFunction<(arg1: any, arg2: any) => any> {
-  constructor () {
-    super((attrs, children) => this.view(attrs, children))
-  }
+import { parseJson } from '../helpers/parse-json'
 
-  public view (attrs, children) {
-    return (state, actions) => (
-      <div
-        {...attrs}
-        oncreate={(element) => this.onCreate(element, attrs)}
-        onupdate={(element) => this.onUpdate(element, attrs)}
-      />
-    )
-  }
+export function VectorMapComponent (attrs, children) {
+  return (state, actions) => (
+    <div
+      {...attrs}
+      oncreate={(element) => onCreate(element, attrs)}
+      onupdate={(element) => onUpdate(element, attrs)}
+    />
+  )
+}
 
-  private onCreate (element, attrs) {
-    this.applyLibrary(element, attrs)
-  }
+function onCreate (element, attrs) {
+  applyLibrary(element, attrs)
+}
 
-  private onUpdate (element, attrs) {
-    this.applyLibrary(element, attrs)
-  }
+function onUpdate (element, attrs) {
+  applyLibrary(element, attrs)
+}
 
-  private applyLibrary (element, attrs) {
-    const data = this.parseJson(attrs.data)
-    $(element).vectorMap(data)
-  }
-
-  private parseJson (value) {
-    try {
-      return 'object' === typeof value ? value : JSON.parse(value)
-    } catch (e) {
-      return null
-    }
-  }
+function applyLibrary (element, attrs) {
+  const data = parseJson(attrs.data)
+  $(element).vectorMap(data)
 }

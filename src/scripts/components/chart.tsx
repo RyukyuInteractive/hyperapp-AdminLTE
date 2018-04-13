@@ -1,64 +1,46 @@
-import { bindWhenNotBound, h, injectable, InjectableFunction } from '../kernel'
+import { h } from 'hyperapp'
 
 import Chart from 'chart.js'
 
-import { deepSet, flattenObject } from '../helpers'
+import { deepSet, flattenObject, parseJson } from '../helpers'
 
-@bindWhenNotBound()()
-@injectable()
-export class ChartComponent extends InjectableFunction<(arg1: any, arg2: any) => any> {
-  private chart: Chart
+export function ChartComponent (attrs, children) {
+  return (state, actions) => (
+    <canvas
+      {...attrs}
+      oncreate={(element) => onCreate(element, attrs)}
+      onupdate={(element) => onUpdate(element, attrs)}>
+      {children}
+    </canvas>
+  )
+}
 
-  constructor () {
-    super((attrs, children) => this.view(attrs, children))
-  }
+function onCreate (element, attrs) {
+  const ctx = element.getContext('2d')
+  const type = attrs.type || 'line'
+  const data = parseJson(attrs.data) || {}
+  const options = parseJson(attrs.options) || {}
 
-  public view (attrs, children) {
-    return (state, actions) => (
-      <canvas
-        {...attrs}
-        oncreate={(element) => this.onCreate(element, attrs)}
-        onupdate={(element) => this.onUpdate(element, attrs)}>
-        {children}
-      </canvas>
-    )
-  }
+  // // chart.js v2 and newer
+  // element.chart = new Chart(ctx, {
+  //   type,
+  //   data,
+  //   options
+  // })
 
-  private onCreate (element, attrs) {
-    const ctx = element.getContext('2d')
-    const type = attrs.type || 'line'
-    const data = this.parseJson(attrs.data) || {}
-    const options = this.parseJson(attrs.options) || {}
+  const method = type[0].toUpperCase() + type.slice(1)
+  element.chart = new Chart(ctx)[method](data, options)
+}
 
-    // // chart.js v2 and newer
-    // this.chart = new Chart(ctx, {
-    //   type,
-    //   data,
-    //   options
-    // })
+function onUpdate (element, attrs) {
+  const data = parseJson(attrs.data) || {}
 
-    const method = type[0].toUpperCase() + type.slice(1)
-    this.chart = new Chart(ctx)[method](data, options)
-  }
+  // // chart.js v2.6 and newer
+  // element.chart.data = data
 
-  private onUpdate (element, attrs) {
-    const data = this.parseJson(attrs.data) || {}
+  Object.entries(flattenObject(data.datasets || {})).map(([key, value]) =>
+    deepSet(element.chart.datasets, key, value)
+  )
 
-    // // chart.js v2.6 and newer
-    // this.chart.data = data
-
-    Object.entries(flattenObject(data.datasets || {})).map(([key, value]) =>
-      deepSet(this.chart.datasets, key, value)
-    )
-
-    this.chart.update()
-  }
-
-  private parseJson (value) {
-    try {
-      return 'object' === typeof value ? value : JSON.parse(value)
-    } catch (e) {
-      return null
-    }
-  }
+  element.chart.update()
 }

@@ -1,5 +1,8 @@
-import { kernel } from '../scripts/kernel'
+const configureKey = 'configure'
 
-kernel.bind('configure').toConstantValue({
-  // endpoint: "http://localhost:3000"
-})
+window[configureKey] = {
+  ...(window[configureKey] || {}),
+  ...{
+    // endpoint: "http://localhost:3000"
+  }
+}

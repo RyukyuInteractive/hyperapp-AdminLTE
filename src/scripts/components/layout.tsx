@@ -1,25 +1,23 @@
-import { bindWhenNotBound, h, injectable, InjectableFunction } from '../kernel'
+import { h } from 'hyperapp'
 
 import { default as $ } from 'jquery'
 
 import 'admin-lte'
 
-@bindWhenNotBound()()
-@injectable()
-export class LayoutComponent extends InjectableFunction<(arg1: any, arg2: any) => any> {
-  constructor () {
-    super((attrs, children) => this.view(attrs, children))
-  }
+import { parseJson } from '../helpers/parse-json'
 
-  public view (attrs, children) {
-    return (state, actions) => (
-      <div oncreate={(element) => this.onCreate(element, attrs)} {...attrs}>
-        <div class="wrapper">{children}</div>
-      </div>
-    )
-  }
+export function LayoutComponent (attrs, children) {
+  return (state, actions) => (
+    <div oncreate={(element) => onCreate(element, attrs)} {...attrs}>
+      <div class="wrapper">{children}</div>
+    </div>
+  )
+}
 
-  private onCreate (element, attrs) {
-    $(element).layout(attrs.option)
-  }
+function onCreate (element, attrs) {
+  applyLibrary(element, attrs)
+}
+
+function applyLibrary (element, attrs) {
+  $(element).layout(parseJson(attrs.option))
 }

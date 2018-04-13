@@ -1,29 +1,27 @@
-import { bindWhenNotBound, h, injectable, InjectableFunction } from '../kernel'
+import { h } from 'hyperapp'
 
 import { default as $ } from 'jquery'
 
 import 'admin-lte'
 
-@bindWhenNotBound()()
-@injectable()
-export class BoxWidgetComponent extends InjectableFunction<(arg1: any, arg2: any) => any> {
-  constructor () {
-    super((attrs, children) => this.view(attrs, children))
-  }
+import { parseJson } from '../helpers/parse-json'
 
-  public view (attrs, children) {
-    if (null == attrs.class) {
-      attrs.class = ''
-    }
-    attrs.class += ' box'
-    return (state, actions) => (
-      <div oncreate={(element) => this.onCreate(element, attrs)} {...attrs}>
-        {children}
-      </div>
-    )
+export function BoxWidgetComponent (attrs, children) {
+  if (null == attrs.class) {
+    attrs.class = ''
   }
+  attrs.class += ' box'
+  return (state, actions) => (
+    <div oncreate={(element) => onCreate(element, attrs)} {...attrs}>
+      {children}
+    </div>
+  )
+}
 
-  private onCreate (element, attrs) {
-    $(element).boxWidget(attrs.option)
-  }
+function onCreate (element, attrs) {
+  applyLibrary(element, attrs)
+}
+
+function applyLibrary (element, attrs) {
+  $(element).boxWidget(parseJson(attrs.option))
 }

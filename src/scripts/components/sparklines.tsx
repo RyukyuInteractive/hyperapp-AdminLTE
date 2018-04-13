@@ -1,44 +1,30 @@
-import { bindWhenNotBound, h, injectable, InjectableFunction } from '../kernel'
+import { h } from 'hyperapp'
 
 import { default as $ } from 'jquery'
 
 import 'jquery-sparkline'
 
-@bindWhenNotBound()()
-@injectable()
-export class SparklinesComponent extends InjectableFunction<(arg1: any, arg2: any) => any> {
-  constructor () {
-    super((attrs, children) => this.view(attrs, children))
-  }
+import { parseJson } from '../helpers/parse-json'
 
-  public view (attrs, children) {
-    return (state, actions) => (
-      <div {...attrs} oncreate={(element) => this.onCreate(element, attrs)}>
-        {children}
-      </div>
-    )
-  }
+export function SparklinesComponent (attrs, children) {
+  return (state, actions) => (
+    <div {...attrs} oncreate={(element) => onCreate(element, attrs)}>
+      {children}
+    </div>
+  )
+}
 
-  private onCreate (element, attrs) {
-    this.applyLibrary(element, attrs)
-  }
+function onCreate (element, attrs) {
+  applyLibrary(element, attrs)
+}
 
-  private applyLibrary (element, attrs) {
-    const data = this.parseJson(attrs.data) || 'html'
-    const options = this.parseJson(attrs.options) || {}
-    const type = attrs.type || 'bar'
+function applyLibrary (element, attrs) {
+  const data = parseJson(attrs.data) || 'html'
+  const options = parseJson(attrs.options) || {}
+  const type = attrs.type || 'bar'
 
-    $(element).sparkline(data, {
-      type,
-      ...options
-    })
-  }
-
-  private parseJson (value) {
-    try {
-      return 'object' === typeof value ? value : JSON.parse(value)
-    } catch (e) {
-      return null
-    }
-  }
+  $(element).sparkline(data, {
+    type,
+    ...options
+  })
 }
