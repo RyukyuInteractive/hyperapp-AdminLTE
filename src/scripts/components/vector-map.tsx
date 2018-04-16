@@ -21,10 +21,17 @@ function onCreate (element, attrs) {
 }
 
 function onUpdate (element, attrs) {
-  applyLibrary(element, attrs)
+  updateLibrary(element, attrs)
 }
 
 function applyLibrary (element, attrs) {
   const data = parseJson(attrs.data)
   $(element).vectorMap(data)
+}
+
+function updateLibrary (element, attrs) {
+  const data = parseJson(attrs.data)
+  Object.entries(data).map(([key, value]) => {
+    $(element).vectorMap('set', key, value)
+  })
 }
