@@ -17,21 +17,22 @@ export function VectorMapComponent (attrs, children) {
 }
 
 function onCreate (element, attrs) {
-  applyLibrary(element, attrs)
+  const $element = $(element)
+  const data = parseJson(attrs.data)
+  $element.vectorMap(data)
+}
+
+const settables = {
+  backgroundColor: 1,
+  focus: 1
 }
 
 function onUpdate (element, attrs) {
-  updateLibrary(element, attrs)
-}
-
-function applyLibrary (element, attrs) {
-  const data = parseJson(attrs.data)
-  $(element).vectorMap(data)
-}
-
-function updateLibrary (element, attrs) {
+  const $element = $(element)
   const data = parseJson(attrs.data)
   Object.entries(data).map(([key, value]) => {
-    $(element).vectorMap('set', key, value)
+    if (settables[key]) {
+      $element.vectorMap('set', key, value)
+    }
   })
 }
